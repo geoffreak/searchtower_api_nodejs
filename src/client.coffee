@@ -55,18 +55,18 @@ module.exports = class Client
     throw "required fields missing" unless data.body.name
     route = conf.get('routes:createIndex')
     @request route, data, (err, cb) ->
-      callback err, null if err
+      return callback err, null if err
       callback null, cb
 
   ###
     update:
       Update Index
   ###
-  update: (data, callback) ->
+  updateIndex: (data, callback) ->
     route = conf.get('routes:updateIndex')
     route.uri += data.name 
     @request route, data, (err, cb) ->
-      callback err, null if err
+      return callback err, null if err
       callback null, cb
 
   ###
